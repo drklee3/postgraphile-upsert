@@ -96,6 +96,11 @@ export const PgMutationUpsertPlugin: Plugin = (builder) => {
             });
             return acc;
           }, {});
+
+          if (fields.length === 0) {
+            return memo;
+          }
+
           // Unique Where conditions
           const WhereType = newWithHooks(
             GraphQLInputObjectType,
